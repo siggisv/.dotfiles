@@ -1,0 +1,13 @@
+[include]
+	path = .git_private_config
+[core]
+	editor = vim
+	excludesFile = ~/.dotfiles/.gitignore_global
+[merge]
+	tool = vimdiff
+[alias]
+	hist = log --oneline --decorate --graph --color
+[color]
+	ui = true
+[commit]
+	template = ~/.dotfiles/.gitmessage.txt
