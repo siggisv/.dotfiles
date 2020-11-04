@@ -11,3 +11,4 @@
 	ui = true
 [commit]
 	template = ~/.dotfiles/.gitmessage.txt
+	gpgsign = true
