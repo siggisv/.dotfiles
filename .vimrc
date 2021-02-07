@@ -13,6 +13,12 @@ set showcmd			" Show (partial) command in status line.
 set number			" show line numbers
 set bg=dark			" use colors for dark background
 
+" Highlight linenumber of current cursor position:
+set cursorline
+highlight clear CursorLine
+" highlight CursorLine cterm=NONE ctermbg=8
+highlight CursorLineNr ctermbg=red
+
 " Easier (smarter) way to move between windows:
 map <C-j> <C-W>j
 map <C-k> <C-W>k
