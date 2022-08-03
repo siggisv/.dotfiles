@@ -32,22 +32,19 @@ set softtabstop=4
 set shiftwidth=4
 set autoindent
 
-" autocmd Filetype gdscript setlocal ts=4 noexpandtab
-
 augroup expandedShortTab
     autocmd!
     autocmd Filetype sql,html,css,javascript setlocal ts=2 sw=2 sts=2 expandtab
 augroup END
 
-augroup PythonIndent
+augroup expandedMedTab
     autocmd!
-    autocmd Filetype python setlocal ts=4 sw=4 sts=4 expandtab
+    autocmd Filetype python,c,cpp setlocal ts=4 sw=4 sts=4 expandtab
 augroup END
 
 autocmd Filetype text setlocal fo+=wa
-" autocmd Filetype c setlocal ts=8 sw=8 sts=8 noexpandtab
 
-" Show whitespace (other than space) as darkgray symbols:
+" Show whitespace as darkgray symbols:
 set list
 "set listchars=tab:\|.,eol:¬,extends:>,precedes:<
 "hi NonText ctermfg=0 cterm=bold
