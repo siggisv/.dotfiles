@@ -11,13 +11,23 @@ set ruler			" show the cursor position all the time
 syntax on 			" enables syntax highlighting
 set showcmd			" Show (partial) command in status line.
 set number			" show line numbers
+
+" Color settings
+" --------------
+colorscheme desert	" Similar, but better than the default.
 set bg=dark			" use colors for dark background
 
-" Highlight linenumber of current cursor position:
+  " Highlight linenumber of current cursor position:
 set cursorline
 highlight clear CursorLine
-" highlight CursorLine cterm=NONE ctermbg=8
 highlight CursorLineNr ctermbg=red
+
+  " Show whitespace as darkgray symbols:
+set list
+set listchars=tab:¦-,eol:↵,extends:>,precedes:<,space:˲
+hi NonText ctermfg=8 cterm=NONE
+hi SpecialKey ctermfg=8 cterm=NONE
+
 
 " Easier (smarter) way to move between windows:
 map <C-j> <C-W>j
@@ -32,6 +42,7 @@ set softtabstop=4
 set shiftwidth=4
 set autoindent
 
+" Filetype dependant configs
 augroup expandedShortTab
     autocmd!
     autocmd Filetype sql,html,css,javascript setlocal ts=2 sw=2 sts=2 expandtab
@@ -43,18 +54,6 @@ augroup expandedMedTab
 augroup END
 
 autocmd Filetype text setlocal fo+=wa
-
-" Show whitespace as darkgray symbols:
-set list
-"set listchars=tab:\|.,eol:¬,extends:>,precedes:<
-"hi NonText ctermfg=0 cterm=bold
-"hi SpecialKey ctermfg=0 cterm=bold
-" set listchars=tab:¦-,eol:¶,extends:>,precedes:<,space:·
-" set listchars=tab:¦⇥,eol:¶,extends:>,precedes:<,space:˽
-set listchars=tab:¦-,eol:↵,extends:>,precedes:<,space:˲
-hi NonText ctermfg=8 cterm=NONE
-hi SpecialKey ctermfg=8 cterm=NONE
-
 
 " Print options
 set printfont=Monospace:h6
