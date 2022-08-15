@@ -50,7 +50,7 @@ augroup END
 
 augroup expandedMedTab
     autocmd!
-    autocmd Filetype python,c,cpp setlocal ts=4 sw=4 sts=4 expandtab
+    autocmd Filetype python,c,cpp,cmake setlocal ts=4 sw=4 sts=4 expandtab
 augroup END
 
 autocmd Filetype text setlocal fo+=wa
