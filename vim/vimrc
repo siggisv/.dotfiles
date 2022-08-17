@@ -1,4 +1,15 @@
-filetype plugin on
+" Might not be needed. But better safe than sorry.
+" In which case it is also safer to not touch it unless compatible is on:
+if &compatible
+	" Vim defaults to `compatible` when selecting a vimrc with the
+	" command-line `-u` argument. Override this.
+	set nocompatible
+endif
+
+" Turn on at once the following
+" - filetype detection,
+" - loading of filetype plugins
+" - and loading of filetype indent settings:
 filetype plugin indent on
 
 " Allows switching to Visual and selecting text with mouse
@@ -11,6 +22,7 @@ set ruler			" show the cursor position all the time
 syntax on 			" enables syntax highlighting
 set showcmd			" Show (partial) command in status line.
 set number			" show line numbers
+set laststatus=2	" always show file-status line
 
 " Color settings
 " --------------
@@ -20,14 +32,18 @@ set bg=dark			" use colors for dark background
   " Highlight linenumber of current cursor position:
 set cursorline
 highlight clear CursorLine
+"highlight CursorLine cterm=NONE ctermbg=16
 highlight CursorLineNr ctermbg=red
 
   " Show whitespace as darkgray symbols:
 set list
-set listchars=tab:¦-,eol:↵,extends:>,precedes:<,space:˲
-hi NonText ctermfg=8 cterm=NONE
-hi SpecialKey ctermfg=8 cterm=NONE
+set listchars=tab:¦-,eol:↵,extends:>,precedes:<,space:.
+hi NonText ctermfg=239 cterm=NONE
+hi SpecialKey ctermfg=238 cterm=NONE
 
+
+hi Comment cterm=italic
+hi MatchParen cterm=reverse ctermbg=NONE
 
 " Easier (smarter) way to move between windows:
 map <C-j> <C-W>j
