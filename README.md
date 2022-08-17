@@ -10,7 +10,7 @@ First install git if you haven't already done so. Then clone this repository:
 
     git clone https://github.com/siggisv/.dotfiles.git ~/.dotfiles
 
-If needed, create first the directory `~/.vim` and remove/archive the old
+If needed, create the directory `~/.vim` and remove/archive the old
 files (i.e. `~/.gitconfig`, `~/.vimrc` and `~/.vim/vimrc`. Then create the
 following symlinks:
 
