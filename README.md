@@ -11,15 +11,17 @@ First install git if you haven't already done so. Then clone this repository:
     git clone https://github.com/siggisv/.dotfiles.git ~/.dotfiles
 
 If needed, create the directory `~/.vim` and remove/archive the old
-files (i.e. `~/.gitconfig`, `~/.vimrc` and `~/.vim/vimrc`. Then create the
-following symlinks:
+files (i.e. `~/.gitconfig`, `~/.tmux.conf`, `~/.vimrc` and `~/.vim/vimrc`.
+Then create the following symlinks:
 
     ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
     ln -s ~/.dotfiles/vim/vimrc ~/.vim/vimrc
+    ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
 
-**Note:** The config for vim assumes that the terminal has a dark background
-that is dark enough so that the color `238` (i.e. rgb: `#444444`), that is
-used to mark whitespace characters, is still visible.
+**Note:** The config for vim assumes that the terminal support at least 256
+colours and has a dark background. One that is dark enough so that the color
+`238` (i.e. rgb: `#444444`), that is used to mark whitespace characters, is
+still visible.
 
 Create the file `~/.git_private_config` with your private info that should not
 be in this repository:

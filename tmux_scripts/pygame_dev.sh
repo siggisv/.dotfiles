@@ -6,7 +6,6 @@ tmux has-session -t $SESSION_NAME 2>/dev/null
 if [ $? != 0 ]; then
 	cd /home/siggisv/work/projects/pygame-dev/pygame
 	tmux new-session -s $SESSION_NAME -n "build/test" -d
-	tmux set -g default-terminal "tmux-256color"
 	tmux select-window -t $SESSION_NAME:0
 
 	tmux set status-left-length 16
