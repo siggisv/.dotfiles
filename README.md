@@ -1,10 +1,43 @@
-My dotfiles (aka config files)
-==============================
+# My dotfiles (aka config files)
 
 Those are some of my personal config files.
 
-Installation
-------------
+## Requirements
+
+- The config for vim assumes that the terminal support at least 256 colours
+  and has a dark background. One that is dark enough so that the color `238`
+  (i.e. rgb: `#444444`), that is used to mark whitespace characters, is still
+  visible.
+
+- `bash_prompt.sh` assumes you have downloaded `.git-prompt.sh` from the
+  [github repository,
+  git/git](https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh)
+  and saved it to your `$HOME` directory.
+
+## Notes
+
+`bash_prompt.sh` adds info to your command promt showing which python venv is
+active (if there is one) and info about the status of your current git
+repository (if you're inside one).
+
+The git status info starts with the `⎇`-symbol and the current branch name,
+followed by:
+
+- `*` if there are any unstaged changed
+- `+` if there are any staged changed
+- `$` if something has been stashed
+- `%` if there are untracked files
+
+If there is an upstream version of the current branch, the git status info
+will end with `|u` followed by:
+
+- `+` if the branch is ahead of upstream, followed with number of commits
+  ahead
+- `-` if the branch is behind upstream, followed with number of commits behind
+- both, if you have diverged
+- `=` if there is no difference
+
+## Installation
 
 First install git if you haven't already done so. Then clone this repository:
 
@@ -17,11 +50,6 @@ Then create the following symlinks:
     ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
     ln -s ~/.dotfiles/vim/vimrc ~/.vim/vimrc
     ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
-
-**Note:** The config for vim assumes that the terminal support at least 256
-colours and has a dark background. One that is dark enough so that the color
-`238` (i.e. rgb: `#444444`), that is used to mark whitespace characters, is
-still visible.
 
 Create the file `~/.git_private_config` with your private info that should not
 be in this repository:
@@ -40,10 +68,6 @@ for how to copy the private keys between computers.
 Add the following line to the end of your `~/.bashrc` file:
 
     . ~/.dotfiles/bash_prompt.sh
-
-**Note:** `bash_prompt.sh` assumes you have downloaded `.git-prompt.sh` from the [git/git github
-repository](https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh)
-and saved it to your `$HOME` directory.
 
 If you did add a PGP-key to your private git config, you also need to add the following line to
 the end of your `~/.bashrc` file:
