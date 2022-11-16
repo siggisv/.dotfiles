@@ -43,7 +43,7 @@ hi SpecialKey ctermfg=238 cterm=NONE
 
 
 hi Comment cterm=italic
-hi MatchParen cterm=reverse ctermbg=NONE
+hi MatchParen ctermfg=230 ctermbg=238 cterm=NONE
 
 " Easier (smarter) way to move between windows:
 map <C-j> <C-W>j
