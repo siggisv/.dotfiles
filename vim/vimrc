@@ -37,10 +37,15 @@ highlight CursorLineNr ctermbg=red
 
   " Show whitespace as darkgray symbols:
 set list
-set listchars=tab:¦-,eol:↵,extends:>,precedes:<,space:.
+set listchars=tab:\|-,eol:↵,extends:>,precedes:<,space:.
 hi NonText ctermfg=239 cterm=NONE
 hi SpecialKey ctermfg=238 cterm=NONE
 
+  " Dark gray backround to make vimdiff readable
+hi DiffAdd ctermbg=236
+hi DiffDelete ctermbg=36
+hi DiffChange ctermbg=234
+hi DiffText ctermbg=236
 
 hi Comment cterm=italic
 hi MatchParen ctermfg=230 ctermbg=238 cterm=NONE
@@ -61,7 +66,7 @@ set autoindent
 " Filetype dependant configs
 augroup expandedShortTab
     autocmd!
-    autocmd Filetype sql,html,css,javascript setlocal ts=2 sw=2 sts=2 expandtab
+    autocmd Filetype sql,html,css,javascript,markdown setlocal ts=2 sw=2 sts=2 expandtab
 augroup END
 
 augroup expandedMedTab
