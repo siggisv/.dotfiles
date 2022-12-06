@@ -50,6 +50,18 @@ hi DiffText ctermbg=236
 hi Comment cterm=italic
 hi MatchParen ctermfg=230 ctermbg=238 cterm=NONE
 
+  " Customization of the indentLine pluggin:
+let g:indentLine_defaultGroup = 'SpecialKey'
+let g:indentLine_char = '┆'
+if v:version <= 801
+    let g:indentLine_fileTypeExclude = ['markdown', 'json']
+else
+    let g:vim_json_syntax_conceal = 0
+    let g:vim_markdown_conceal = 0
+    let g:vim_markdown_conceal_code_blocks = 0
+endif
+
+
 " Easier (smarter) way to move between windows:
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -66,7 +78,7 @@ set autoindent
 " Filetype dependant configs
 augroup expandedShortTab
     autocmd!
-    autocmd Filetype sql,html,css,javascript,markdown setlocal ts=2 sw=2 sts=2 expandtab
+    autocmd Filetype sql,html,css,javascript,markdown,yaml setlocal ts=2 sw=2 sts=2 expandtab
 augroup END
 
 augroup expandedMedTab
