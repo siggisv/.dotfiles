@@ -32,20 +32,20 @@ set bg=dark			" use colors for dark background
   " Highlight linenumber of current cursor position:
 set cursorline
 highlight clear CursorLine
-"highlight CursorLine cterm=NONE ctermbg=16
+"highlight CursorLine ctermbg=232
 highlight CursorLineNr ctermbg=red
 
   " Show whitespace as darkgray symbols:
 set list
-set listchars=tab:\|-,eol:↵,extends:>,precedes:<,space:.
-hi NonText ctermfg=239 cterm=NONE
-hi SpecialKey ctermfg=238 cterm=NONE
+set listchars=tab:¦-,eol:↵,extends:>,precedes:<,space:.
+hi NonText ctermfg=236 cterm=NONE
+hi SpecialKey ctermfg=236 cterm=NONE
 
   " Dark gray backround to make vimdiff readable
-hi DiffAdd ctermbg=236
+hi DiffAdd ctermbg=237
 hi DiffDelete ctermbg=36
 hi DiffChange ctermbg=234
-hi DiffText ctermbg=236
+hi DiffText ctermbg=237
 
 hi Comment cterm=italic
 hi MatchParen ctermfg=230 ctermbg=238 cterm=NONE

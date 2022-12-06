@@ -5,8 +5,8 @@ Those are some of my personal config files.
 ## Requirements
 
 - The config for vim assumes that the terminal support at least 256 colours
-  and has a dark background. One that is dark enough so that the color `238`
-  (i.e. rgb: `#444444`), that is used to mark whitespace characters, is still
+  and has a dark background. One that is dark enough so that the color `236`
+  (i.e. rgb: `#303030`), that is used to mark whitespace characters, is still
   visible.
 
 - `bash_prompt.sh` assumes you have downloaded `.git-prompt.sh` from the
