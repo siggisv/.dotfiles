@@ -78,12 +78,13 @@ set autoindent
 " Filetype dependant configs
 augroup expandedShortTab
     autocmd!
-    autocmd Filetype sql,html,css,javascript,markdown,yaml setlocal ts=2 sw=2 sts=2 expandtab
+    autocmd Filetype sql,html,css,javascript,markdown,yaml,cpp
+        \ setlocal ts=2 sw=2 sts=2 expandtab
 augroup END
 
 augroup expandedMedTab
     autocmd!
-    autocmd Filetype python,c,cpp,cmake setlocal ts=4 sw=4 sts=4 expandtab
+    autocmd Filetype python,c,cmake setlocal ts=4 sw=4 sts=4 expandtab
 augroup END
 
 autocmd Filetype text setlocal fo+=wa
