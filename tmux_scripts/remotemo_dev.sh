@@ -1,6 +1,11 @@
 #!/bin/bash
 
-SESSION_NAME="ReMoTeMo-dev"
+SESSION_NAME="remoTemo-dev"
+source <(/usr/bin/resize -s)
+OLD_LINES=$LINES
+OLD_COLUMNS=$COLUMNS
+/usr/bin/resize -s 87 171 > /dev/null
+
 tmux has-session -t "$SESSION_NAME" 2>/dev/null
 
 if [ $? != 0 ]; then
@@ -28,4 +33,6 @@ if [ $? != 0 ]; then
 	tmux send-keys "vim src" C-m
 fi
 
-tmux attach -t $SESSION_NAME:0.0
+tmux attach -t "$SESSION_NAME:0.0"
+/usr/bin/resize -s $OLD_LINES $OLD_COLUMNS > /dev/null
+echo
