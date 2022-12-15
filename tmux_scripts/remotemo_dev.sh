@@ -20,6 +20,10 @@ if [ $? != 0 ]; then
 	tmux send-keys "vim CMakeLists.txt" C-m
 
 	tmux split-window -vf -l 14
+	tmux send-keys "history -s cmake -S . -B Debug "\
+		"-DCMAKE_BUILD_TYPE=Debug" C-m
+	tmux send-keys "history -s cmake -S . -B Release "\
+		"-DCMAKE_BUILD_TYPE=Release" C-m
 	tmux send-keys "history -s cmake --build Debug" C-m
 	tmux send-keys "history -s Debug/hello_sample" C-m
 
