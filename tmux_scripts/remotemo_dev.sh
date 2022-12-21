@@ -31,7 +31,9 @@ if [ $? != 0 ]; then
 	tmux split-window -v -l 14
 	tmux send-keys "history -s cpplint --recursive src include" C-m
 	tmux send-keys "history -s clang-format -i src/*.[hc]pp "\
-		"include/remotemo/*.hpp" C-m
+		"include/*/*.hpp --dry-run" C-m
+	tmux send-keys "history -s clang-format -i src/*.[hc]pp "\
+		"include/*/*.hpp" C-m
 	tmux select-pane -t :.0
 	tmux resize-pane -Z
 	tmux send-keys "vim src" C-m
