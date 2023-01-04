@@ -102,20 +102,26 @@ if [ $? != 0 ]; then
 	tmux send-keys "vim CMakeLists.txt" C-m
 
 	tmux split-window -vf -l 14
-	tmux send-keys "history -s cmake -S . -B Debug "\
-		"-DCMAKE_BUILD_TYPE=Debug" C-m
-	tmux send-keys "history -s cmake -S . -B Release "\
-		"-DCMAKE_BUILD_TYPE=Release" C-m
-	tmux send-keys "history -s cmake --build Debug" C-m
-	tmux send-keys "history -s Debug/hello_sample" C-m
+	# The following add often used commands to the history.
+	# Echo temporarily set off to make it look cleaner.
+	tmux send-keys "  stty -echo" C-m\
+		"history -s cmake -S . -B Debug -DCMAKE_BUILD_TYPE=Debug" C-m\
+		"history -s cmake -S . -B Release -DCMAKE_BUILD_TYPE=Release" C-m\
+		"history -s cmake --build Debug" C-m\
+		"history -s Debug/hello_sample" C-m\
+		"  clear" C-m\
+		"  stty echo" C-m
 
 	tmux new-window -n "SRC" -t "$SESSION_NAME:1"
 	tmux split-window -v -l 14
-	tmux send-keys "history -s cpplint --recursive src include" C-m
-	tmux send-keys "history -s clang-format -i src/*.[hc]pp "\
-		"include/*/*.hpp --dry-run" C-m
-	tmux send-keys "history -s clang-format -i src/*.[hc]pp "\
-		"include/*/*.hpp" C-m
+	tmux send-keys "  stty -echo" C-m\
+		"history -s cpplint --recursive src include" C-m\
+		"history -s clang-format -i src/*.[hc]pp "\
+			"include/*/*.hpp --dry-run" C-m\
+		"history -s clang-format -i src/*.[hc]pp "\
+			"include/*/*.hpp" C-m\
+		"  clear" C-m\
+		"  stty echo" C-m
 	tmux select-pane -t :.0
 	tmux resize-pane -Z
 	tmux send-keys "vim src" C-m
