@@ -41,6 +41,9 @@ set listchars=tab:¦-,eol:↵,extends:>,precedes:<,space:.
 hi NonText ctermfg=236 cterm=NONE
 hi SpecialKey ctermfg=236 cterm=NONE
 
+  " Bright yellow background wasn't so nice for search/replace
+hi IncSearch ctermbg=239
+
   " Dark gray backround to make vimdiff readable
 hi DiffAdd ctermbg=237
 hi DiffDelete ctermbg=36
