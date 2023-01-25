@@ -3,8 +3,17 @@
 [core]
 	editor = vim
 	excludesFile = ~/.dotfiles/.gitignore_global
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
 [merge]
 	tool = vimdiff
+[mergetool "vimdiff"]
+	; layout was added in git version 2.37
+	; The following is what I'd like to try when I eventually do switch to
+	; that version
+	layout = "LOCAL,REMOTE / MERGED,BASE + (LOCAL/BASE/REMOTE),MERGED"
 [alias]
 	hist = log --oneline --decorate --graph --color
 [color]
