@@ -41,23 +41,39 @@ will end with `|u` followed by:
 
 First install git if you haven't already done so. Then clone this repository:
 
-    git clone https://github.com/siggisv/.dotfiles.git ~/.dotfiles
+```bash
+git clone https://github.com/siggisv/.dotfiles ~/.dotfiles
+cd ~/.dotfiles
+git submodule update --init
+
+# Or simpler one liner:
+git clone --recurse-submodules https://github.com/siggisv/.dotfiles ~/.dotfiles
+```
 
 If needed, create the directory `~/.vim` and remove/archive the old
 files (i.e. `~/.gitconfig`, `~/.tmux.conf`, `~/.vimrc` and `~/.vim/vimrc`.
 Then create the following symlinks:
 
-    ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
-    ln -s ~/.dotfiles/vim/vimrc ~/.vim/vimrc
-    ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
+```bash
+ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
+ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
+ln -s ~/.dotfiles/vim/vimrc ~/.vim/vimrc
+
+# If needed, first create this folder:
+mkdir -p ~/.vim/pack/plugins/start
+# before symlinking into it:
+ln -s ~/.dotfiles/vim/pack/plugins/start/* ~/.vim/pack/plugins/start/
+```
 
 Create the file `~/.git_private_config` with your private info that should not
 be in this repository:
 
-    [user]
-        name = Your Name
-        email = your@email.com
-        signingkey = PGP-signing key
+```gitconfig
+[user]
+    name = Your Name
+    email = your@email.com
+    signingkey = PGP-signing key
+```
 
 **Note:** `PGP-signing key` should be your public PGP-key, if you have one to sign your commits.
 See [Managing commit signature verification](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/managing-commit-signature-verification)
@@ -67,9 +83,13 @@ for how to copy the private keys between computers.
 
 Add the following line to the end of your `~/.bashrc` file:
 
-    . ~/.dotfiles/bash_prompt.sh
+```bash
+. ~/.dotfiles/bash_prompt.sh
+```
 
 If you did add a PGP-key to your private git config, you also need to add the following line to
 the end of your `~/.bashrc` file:
 
-    export GPG_TTY=$(tty)
+```bash
+export GPG_TTY=$(tty)
+```
