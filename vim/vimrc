@@ -1,9 +1,9 @@
 " Might not be needed. But better safe than sorry.
 " In which case it is also safer to not touch it unless compatible is on:
 if &compatible
-	" Vim defaults to `compatible` when selecting a vimrc with the
-	" command-line `-u` argument. Override this.
-	set nocompatible
+    " Vim defaults to `compatible` when selecting a vimrc with the
+    " command-line `-u` argument. Override this.
+    set nocompatible
 endif
 
 " Turn on at once the following
@@ -53,7 +53,7 @@ hi DiffText ctermbg=237
 hi Comment cterm=italic
 hi MatchParen ctermfg=230 ctermbg=238 cterm=NONE
 
-  " Customization of the indentLine pluggin:
+  " Customization of the indentLine plugin:
 let g:indentLine_defaultGroup = 'SpecialKey'
 let g:indentLine_char = '┆'
 if v:version <= 801
@@ -64,6 +64,20 @@ else
     let g:vim_markdown_conceal_code_blocks = 0
 endif
 
+  " Customization of the vim-cpp-modern plugin
+
+" Disable function highlighting (affects both C and C++ files)
+let g:cpp_function_highlight = 1
+
+" Enable highlighting of C++11 attributes
+let g:cpp_attributes_highlight = 1
+
+" Highlight struct/class member variables (affects both C and C++ files)
+let g:cpp_member_highlight = 1
+
+" Put all standard C and C++ keywords under Vim's highlight group 'Statement'
+" (affects both C and C++ files)
+let g:cpp_simple_highlight = 1
 
 " Easier (smarter) way to move between windows:
 map <C-j> <C-W>j
