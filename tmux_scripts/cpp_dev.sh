@@ -125,6 +125,11 @@ if [ $? != 0 ]; then
 	tmux select-pane -t :.0
 	tmux resize-pane -Z
 	tmux send-keys "vim src" C-m
+
+	tmux new-window -n "g/re/p" -t "$SESSION_NAME:2"
+	tmux split-window -h
+	tmux send-keys "grep -rn -B5 -A5 --color=always filesystem "\
+		"include src | less -R" C-m
 fi
 
 tmux attach -t "$SESSION_NAME:0.0"

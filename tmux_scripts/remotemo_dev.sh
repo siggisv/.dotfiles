@@ -24,23 +24,27 @@ if [ $? != 0 ]; then
 		"history -s cmake -S . -B Debug -DCMAKE_BUILD_TYPE=Debug" C-m\
 		"history -s cmake -S . -B Release -DCMAKE_BUILD_TYPE=Release" C-m\
 		"history -s cmake --build Debug" C-m\
-		"history -s Debug/hello_sample" C-m\
+		"history -s Tools/run_tests" C-m\
 		"  clear" C-m\
 		"  stty echo" C-m
 
 	tmux new-window -n "SRC" -t "$SESSION_NAME:1"
 	tmux split-window -v -l 14
 	tmux send-keys "  stty -echo" C-m\
-		"history -s cpplint --recursive src include" C-m\
-		"history -s clang-format -i src/*.[hc]pp "\
-			"include/*/*.hpp --dry-run" C-m\
-		"history -s clang-format -i src/*.[hc]pp "\
-			"include/*/*.hpp" C-m\
+		"history -s cpplint --recursive src include tests/src" C-m\
+		"history -s 'clang-format -i src/*.[hc]pp tests/src/*.[hc]pp "\
+			"include/*/*.hpp --dry-run'" C-m\
+		"history -s Tools/diff-clang-format src/remotemo.cpp" C-m\
 		"  clear" C-m\
 		"  stty echo" C-m
 	tmux select-pane -t :.0
 	tmux resize-pane -Z
 	tmux send-keys "vim src" C-m
+
+	tmux new-window -n "g/re/p" -t "$SESSION_NAME:2"
+	tmux split-window -h
+	tmux send-keys "grep -rn -B5 -A5 --color=always filesystem "\
+		"include src tests/src | less -R" C-m
 fi
 
 tmux attach -t "$SESSION_NAME:0.0"
