@@ -25,15 +25,16 @@ if [ $? != 0 ]; then
 		"history -s cmake -S . -B Release -DCMAKE_BUILD_TYPE=Release" C-m\
 		"history -s cmake --build Debug" C-m\
 		"history -s Tools/run_tests" C-m\
+		"history -s Debug/tests/test_io [print] -s" C-m\
 		"  clear" C-m\
 		"  stty echo" C-m
 
 	tmux new-window -n "SRC" -t "$SESSION_NAME:1"
 	tmux split-window -v -l 14
 	tmux send-keys "  stty -echo" C-m\
-		"history -s cpplint --recursive src include tests/src" C-m\
+		"history -s cpplint --recursive src samples include tests/src" C-m\
 		"history -s 'clang-format -i src/*.[hc]pp tests/src/*.[hc]pp "\
-			"include/*/*.hpp --dry-run'" C-m\
+			"samples/*.[hc]pp include/*/*.hpp --dry-run'" C-m\
 		"history -s Tools/diff-clang-format src/remotemo.cpp" C-m\
 		"  clear" C-m\
 		"  stty echo" C-m
@@ -43,7 +44,7 @@ if [ $? != 0 ]; then
 
 	tmux new-window -n "g/re/p" -t "$SESSION_NAME:2"
 	tmux split-window -h
-	tmux send-keys "grep -rn -B5 -A5 --color=always filesystem "\
+	tmux send-keys "grep -rn -B5 -A5 --color=always \"filesystem\" "\
 		"include src tests/src | less -R" C-m
 fi
 
