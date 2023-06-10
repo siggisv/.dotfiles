@@ -1,7 +1,7 @@
 [include]
 	path = .git_private_config
 [core]
-	editor = vim
+	editor = nvim
 	excludesFile = ~/.dotfiles/.gitignore_global
 [diff]
 	tool = vimdiff
@@ -10,6 +10,7 @@
 [merge]
 	tool = vimdiff
 [mergetool "vimdiff"]
+	path = nvim
 	; layout was added in git version 2.37
 	; The following is what I'd like to try when I eventually do switch to
 	; that version

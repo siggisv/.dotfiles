@@ -32,7 +32,6 @@ set bg=dark			" use colors for dark background
   " Highlight linenumber of current cursor position:
 set cursorline
 highlight clear CursorLine
-"highlight CursorLine ctermbg=232
 highlight CursorLineNr ctermbg=red
 
   " Show whitespace as darkgray symbols:
@@ -54,8 +53,9 @@ hi Comment cterm=italic
 hi MatchParen ctermfg=230 ctermbg=238 cterm=NONE
 
   " Customization of the indentLine plugin:
-let g:indentLine_defaultGroup = 'SpecialKey'
-let g:indentLine_char = '┆'
+" let g:indentLine_defaultGroup = 'SpecialKey'
+let g:indentLine_color_term = 238
+let g:indentLine_char = '▏'
 if v:version <= 801
     let g:indentLine_fileTypeExclude = ['markdown', 'json']
 else

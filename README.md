@@ -51,18 +51,29 @@ git clone --recurse-submodules https://github.com/siggisv/.dotfiles ~/.dotfiles
 ```
 
 If needed, create the directory `~/.vim` and remove/archive the old
-files (i.e. `~/.gitconfig`, `~/.tmux.conf`, `~/.vimrc` and `~/.vim/vimrc`.
-Then create the following symlinks:
+files (i.e. `~/.config/nvim/init.vim`, `~/.gitconfig`, `~/.tmux.conf`,
+`~/.vimrc` and `~/.vim/vimrc`.  Then create the following symlinks:
 
 ```bash
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
-ln -s ~/.dotfiles/vim/vimrc ~/.vim/vimrc
 
+# VIM:
+ln -s ~/.dotfiles/vim/vimrc ~/.vim/vimrc
 # If needed, first create this folder:
 mkdir -p ~/.vim/pack/plugins/start
 # before symlinking into it:
 ln -s ~/.dotfiles/vim/pack/plugins/start/* ~/.vim/pack/plugins/start/
+
+# NeoVim:
+ln -s ~/.dotfiles/nvim/init.vim ~/.config/nvim/init.vim
+# If needed, first create those folders:
+mkdir -p ~/.local/share/nvim/site/autoload
+mkdir ~/.config/nvim/colors
+# before symlinking into them:
+ln -s ~/.dotfiles/nvim/vim-plug/plug.vim \
+    ~/.local/share/nvim/site/autoload/.
+ln -s ~/.dotfiles/nvim/colors/* ~/.config/nvim/colors/.
 ```
 
 Create the file `~/.git_private_config` with your private info that should not
