@@ -99,7 +99,7 @@ if [ $? != 0 ]; then
 	tmux send-keys "git hist --all" C-m
 
 	tmux split-window -h
-	tmux send-keys "vim CMakeLists.txt" C-m
+	tmux send-keys "nvim CMakeLists.txt" C-m
 
 	tmux split-window -vf -l 14
 	# The following add often used commands to the history.
@@ -124,11 +124,11 @@ if [ $? != 0 ]; then
 		"  stty echo" C-m
 	tmux select-pane -t :.0
 	tmux resize-pane -Z
-	tmux send-keys "vim src" C-m
+	tmux send-keys "nvim src" C-m
 
 	tmux new-window -n "g/re/p" -t "$SESSION_NAME:2"
 	tmux split-window -h
-	tmux send-keys "grep -rn -B5 -A5 --color=always filesystem "\
+	tmux send-keys "grep -rn -B5 -A5 --color=always \"filesystem\" "\
 		"include src | less -R" C-m
 fi
 
