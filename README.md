@@ -66,7 +66,7 @@ mkdir -p ~/.vim/pack/plugins/start
 ln -s ~/.dotfiles/vim/pack/plugins/start/* ~/.vim/pack/plugins/start/
 
 # NeoVim:
-ln -s ~/.dotfiles/nvim/init.vim ~/.config/nvim/init.vim
+ln -s ~/.dotfiles/nvim/init.lua ~/.config/nvim/init.lua
 # If needed, first create those folders:
 mkdir -p ~/.local/share/nvim/site/autoload
 mkdir ~/.config/nvim/colors

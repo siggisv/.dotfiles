@@ -85,7 +85,7 @@ hi Type			guifg=#4ea800	gui=none
 "hi StorageClass	"links to Type
 "hi Structure		"links to Type
 "hi TypeDef			"links to Type
-hi Special		guifg=#75507b	gui=none
+hi Special		guifg=#b4dcb4	gui=none
 "hi SpecialComment	"links to Special
 "hi SpecialChar		"links to Special
 "hi Debug			"links to Special
