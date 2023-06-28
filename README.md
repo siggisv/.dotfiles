@@ -8,6 +8,9 @@ Those are some of my personal config files.
   and has a dark background. One that is dark enough so that the color `236`
   (i.e. rgb: `#303030`), that is used to mark whitespace characters, is still
   visible.
+- The config for neovim assumes:
+  - a terminal with 24-bit "truecolour" and cursor-shaping support.
+  - that `clangd` has been installed.
 
 - `bash_prompt.sh` assumes you have downloaded `.git-prompt.sh` from the
   [github repository,
@@ -50,30 +53,14 @@ git submodule update --init
 git clone --recurse-submodules https://github.com/siggisv/.dotfiles ~/.dotfiles
 ```
 
-If needed, create the directory `~/.vim` and remove/archive the old
-files (i.e. `~/.config/nvim/init.vim`, `~/.gitconfig`, `~/.tmux.conf`,
-`~/.vimrc` and `~/.vim/vimrc`.  Then create the following symlinks:
+### git, tmux and bash-prompt
+
+If needed remove/archive the old files, `~/.gitconfig` and `~/.tmux.conf`.
+Then create the following symlinks:
 
 ```bash
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
-
-# VIM:
-ln -s ~/.dotfiles/vim/vimrc ~/.vim/vimrc
-# If needed, first create this folder:
-mkdir -p ~/.vim/pack/plugins/start
-# before symlinking into it:
-ln -s ~/.dotfiles/vim/pack/plugins/start/* ~/.vim/pack/plugins/start/
-
-# NeoVim:
-ln -s ~/.dotfiles/nvim/init.lua ~/.config/nvim/init.lua
-# If needed, first create those folders:
-mkdir -p ~/.local/share/nvim/site/autoload
-mkdir ~/.config/nvim/colors
-# before symlinking into them:
-ln -s ~/.dotfiles/nvim/vim-plug/plug.vim \
-    ~/.local/share/nvim/site/autoload/.
-ln -s ~/.dotfiles/nvim/colors/* ~/.config/nvim/colors/.
 ```
 
 Create the file `~/.git_private_config` with your private info that should not
@@ -104,3 +91,45 @@ the end of your `~/.bashrc` file:
 ```bash
 export GPG_TTY=$(tty)
 ```
+
+### Vim
+
+If needed, create the directories `~/.vim` and `~/.vim/pack/plugins/start`:
+
+```bash
+mkdir -p ~/.vim/pack/plugins/start
+```
+
+Then, if needed, remove/archive the old files, `~/.vimrc` and `~/.vim/vimrc`
+before creating the following symlinks:
+
+```bash
+ln -s ~/.dotfiles/vim/vimrc ~/.vim/vimrc
+ln -s ~/.dotfiles/vim/pack/plugins/start/* ~/.vim/pack/plugins/start/
+```
+
+### NeoVim
+
+If needed, create the directories `~/.local/share/nvim/site/autoload`,
+`~/.config/nvim` and `~/.config/nvim/colors`:
+
+```bash
+mkdir -p ~/.local/share/nvim/site/autoload
+mkdir -p ~/.config/nvim/colors
+```
+
+Then, if needed, remove/archive the old files, `~/.config/nvim/init.lua`,
+`~/.config/nvim/init.vim` and `~/.local/share/nvim/site/autoload/plug.vim`
+before creating the following symlinks:
+
+```bash
+ln -s ~/.dotfiles/nvim/init.lua ~/.config/nvim/init.lua
+ln -s ~/.dotfiles/nvim/vim-plug/plug.vim \
+    ~/.local/share/nvim/site/autoload/.
+ln -s ~/.dotfiles/nvim/colors/* ~/.config/nvim/colors/.
+```
+
+Do note that the first time you open neovim after this, you might get a bunch
+of errors because of missing plugins. Fix that with the `:PlugUpdate` command
+(from within NeoVim). You will probably have to quit and open neovim again
+(and even might have to repeat that command omce more).
