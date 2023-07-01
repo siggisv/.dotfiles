@@ -112,7 +112,7 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = 'text',
   group = text_group,
   callback = function()
-    vim.opt_local.formatoption:append({ 'w', 'a' })
+    vim.opt_local.formatoptions:append({ 'w', 'a' })
   end,
   desc = 'Autoformat whole paragraph in text files'
 })
