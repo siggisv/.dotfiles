@@ -1,7 +1,8 @@
 Write subject line (50 char or less)
+##################################################
 
-Multi-line description.
-
-- Blank line after sunject.
-- Blank line between paragraphs.
-
+# Optionally write a multi-line description.
+#
+# - Blank line after subject.
+# - Blank line between paragraphs.
+# 
