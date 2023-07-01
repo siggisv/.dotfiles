@@ -4,7 +4,7 @@ SESSION_NAME="remoTemo-dev"
 source <(/usr/bin/resize -s)
 OLD_LINES=$LINES
 OLD_COLUMNS=$COLUMNS
-/usr/bin/resize -s 87 171 > /dev/null
+/usr/bin/resize -s 87 173 > /dev/null
 
 tmux has-session -t "$SESSION_NAME" 2>/dev/null
 

@@ -36,20 +36,20 @@ help() {
 
 # default values
 SESSION_NAME="C++ dev"
-TMP_LINES=87
-TMP_COLUMNS=171
+NEW_LINES=87
+NEW_COLUMNS=173
 DO_RESIZE=1
 
 VALID_ARGS=$(getopt -q -o hc:l:n \
 		--long help,col:,columns:,lines:,no-resize -- "$@")
-TMP_ERR=$?
-if [[ $TMP_ERR -ne 0 ]]; then
-	if [[ $TMP_ERR -eq 1 ]]; then
+ERR_CODE=$?
+if [[ $ERR_CODE -ne 0 ]]; then
+	if [[ $ERR_CODE -eq 1 ]]; then
 		echo -e "Invalid command option: $1"
 		usage
 		echo "See $0 --help for more details."
 	else
-		echo -e "getopt failed! Return code: $TMP_ERR"
+		echo -e "getopt failed! Return code: $ERR_CODE"
 	fi
 	exit $?
 fi
@@ -58,11 +58,11 @@ eval set -- "$VALID_ARGS"
 while [ : ]; do
 	case "$1" in
 		-c | --col | --columns)
-			TMP_COLUMNS=$2
+			NEW_COLUMNS=$2
 			shift 2
 			;;
 		-l | --lines)
-			TMP_LINES=$2
+			NEW_LINES=$2
 			shift 2
 			;;
 		-n | --no-resize)
@@ -87,7 +87,7 @@ if [[ $DO_RESIZE -ne 0 ]]; then
 	source <(/usr/bin/resize -s)
 	OLD_LINES=$LINES
 	OLD_COLUMNS=$COLUMNS
-	/usr/bin/resize -s $TMP_LINES $TMP_COLUMNS > /dev/null
+	/usr/bin/resize -s $NEW_LINES $NEW_COLUMNS > /dev/null
 fi
 
 tmux has-session -t "$SESSION_NAME" 2>/dev/null
