@@ -18,6 +18,7 @@ hi Cursor		guifg=#242424	guibg=#eae788	gui=none
 hi Visual		guifg=none		guibg=#002c28
 hi Folded		guifg=#00ffaa	guibg=#485048	gui=none
 hi FoldColumn	guifg=#00ffaa	guibg=#606a60	gui=none
+hi SignColumn	guifg=#798080	guibg=#1b2424	gui=none
 hi MatchParen	guifg=#ffffd8	guibg=#444444	gui=none
 
 " - Errors and warnings
@@ -30,7 +31,7 @@ hi Pmenu		guifg=#ffffd7	guibg=#444444
 hi PmenuSel		guifg=#080808	guibg=#cae982
 
 " - Status and split lines
-hi StatusLine	guifg=#80ff60	guibg=#405040	gui=italic
+hi StatusLine	guifg=#80ff60	guibg=#385838	gui=italic
 hi StatusLineNC	guifg=#749074	guibg=#1b2b1b	gui=none
 hi VertSplit	guifg=#888888	guibg=none		gui=none
 
@@ -102,7 +103,6 @@ hi Todo			guifg=#2e3436	guibg=#fce94f	gui=none
 "hi PmenuThumb
 "hi Question
 "hi Scrollbar
-"hi SignColumn
 "hi SpellBad
 "hi SpellCap
 "hi SpellLocal
