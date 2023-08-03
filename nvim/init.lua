@@ -67,7 +67,7 @@ vim.keymap.set('', '<C-k>', '<C-W>k')
 vim.keymap.set('', '<C-h>', '<C-W>h')
 vim.keymap.set('', '<C-l>', '<C-W>l')
 
-vim.keymap.set('i', '<c-s>', function() vim.lsp.buf.signature_help() end, {buffer=true})
+vim.keymap.set('i', '<C-s>', function() vim.lsp.buf.signature_help() end, {buffer=true})
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function() vim.highlight.on_yank() end,
