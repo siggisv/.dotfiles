@@ -26,6 +26,8 @@ if [ $? != 0 ]; then
 		"history -s cmake --build Debug" C-m\
 		"history -s Tools/run_tests" C-m\
 		"history -s Debug/tests/test_io [print] -s" C-m\
+		"history -s cmake --build Debug --target docs 2>&1 "\
+			"| grep --color=always \"warning\" | less -R" C-m\
 		"  clear" C-m\
 		"  stty echo" C-m
 
