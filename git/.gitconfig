@@ -1,0 +1,8 @@
+[include]
+	path = ~/.dotfiles/git/.git_my_config
+[user]
+	signingkey = {Your PGP signing key}
+	email = {your@email.com}
+	name = {Your Name}
+[commit]
+	gpgsign = {true/false}

@@ -1,8 +1,6 @@
-[include]
-	path = .git_private_config
 [core]
 	editor = nvim
-	excludesFile = ~/.dotfiles/.gitignore_global
+	excludesFile = ~/.dotfiles/git/.gitignore_global
 [diff]
 	tool = vimdiff
 [difftool]
@@ -20,5 +18,4 @@
 [color]
 	ui = true
 [commit]
-	template = ~/.dotfiles/.gitmessage.txt
-	gpgsign = true
+	template = ~/.dotfiles/git/.gitmessage.txt

@@ -1,6 +1,7 @@
 # My dotfiles (aka config files)
 
-Those are some of my personal config files.
+Those are some of my personal config files. Most of those (and the following
+instructions) assume the OS to be Linux.
 
 ## Requirements
 
@@ -53,43 +54,58 @@ git submodule update --init
 git clone --recurse-submodules https://github.com/siggisv/.dotfiles ~/.dotfiles
 ```
 
-### git, tmux and bash-prompt
+### git (on Windows and Linux)
 
-If needed remove/archive the old files, `~/.gitconfig` and `~/.tmux.conf`.
-Then create the following symlinks:
+If needed remove/archive the old file, `~/.gitconfig`. Then copy the following
+file:
 
 ```bash
-ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
-ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
+cp ~/.dotfiles/git/.gitconfig ~/.gitconfig
 ```
 
-Create the file `~/.git_private_config` with your private info that should not
-be in this repository:
+Edit it to replace the parts surrounded by "{" and "}" with the correct info:
 
 ```gitconfig
 [user]
-    name = Your Name
-    email = your@email.com
-    signingkey = PGP-signing key
+    signingkey = {Your PGP signing key}
+    email = {your@email.com}
+    name = {Your Name}
+[commit]
+	gpgsign = {true/false}
 ```
 
-**Note:** `PGP-signing key` should be your public PGP-key, if you have one to sign your commits.
-See [Managing commit signature verification](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/managing-commit-signature-verification)
-for how to create one and add it to your GitHub account. See e.g. [Moving/Copying your PGP 
+**Note:** IF you want to sign your commits, then `{Your PGP-signing key}`
+should be your public PGP-key and `gpgsign` should be `true`.
+See [Managing commit signature
+verification](https://docs.github.com/en/authenticating/managing-commit-signature-verification)
+for how to create one and add it to your GitHub account. See e.g.
+[Moving/Copying your PGP 
 Keys](https://www.phildev.net/pgp/gpg_moving_keys.html)
-for how to copy the private keys between computers.
+for how to copy the private keys between computers (Note on Windows. The
+setup of the PGP-key needs to be done from within `Git Bash`).
+
+If you do set a PGP-key to be used to sign your commits, you also need to add
+the following line to the end of your `~/.bashrc` file (not needed on Windows):
+
+```bash
+export GPG_TTY=$(tty)
+```
+
+### tmux
+
+If needed remove/archive the old file, `~/.tmux.conf`.
+Then create the following symlink:
+
+```bash
+ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
+```
+
+### bash-prompt
 
 Add the following line to the end of your `~/.bashrc` file:
 
 ```bash
 . ~/.dotfiles/bash_prompt.sh
-```
-
-If you did add a PGP-key to your private git config, you also need to add the following line to
-the end of your `~/.bashrc` file:
-
-```bash
-export GPG_TTY=$(tty)
 ```
 
 ### Vim
