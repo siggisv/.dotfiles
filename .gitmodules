@@ -4,6 +4,3 @@
 [submodule "vim/pack/plugins/start/vim-cpp-modern"]
 	path = vim/pack/plugins/start/vim-cpp-modern
 	url = https://github.com/bfrg/vim-cpp-modern
-[submodule "nvim/vim-plug"]
-	path = nvim/vim-plug
-	url = https://github.com/junegunn/vim-plug.git

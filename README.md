@@ -1,17 +1,19 @@
 # My dotfiles (aka config files)
 
 Those are some of my personal config files. Most of those (and the following
-instructions) assume the OS to be Linux.
+instructions) assume the OS to be Linux and that the path to this directory to
+be `~/.dotfiles`.
 
 ## Requirements
 
-- The config for vim assumes that the terminal support at least 256 colours
+- The config for `Vim` assumes that the terminal support at least 256 colours
   and has a dark background. One that is dark enough so that the color `236`
   (i.e. rgb: `#303030`), that is used to mark whitespace characters, is still
   visible.
-- The config for neovim assumes:
+- The config for `Neovim` assumes:
   - a terminal with 24-bit "truecolour" and cursor-shaping support.
   - that `clangd` has been installed.
+  - that some C-compiler (e.g. `gcc` or `clang`) is in the path.
 
 - `bash_prompt.sh` assumes you have downloaded `.git-prompt.sh` from the
   [github repository,
@@ -54,18 +56,24 @@ git submodule update --init
 git clone --recurse-submodules https://github.com/siggisv/.dotfiles ~/.dotfiles
 ```
 
+*Note* the submodules are only needed if using `Vim`.
+
 ### git (on Windows and Linux)
 
 If needed remove/archive the old file, `~/.gitconfig`. Then copy the following
 file:
 
 ```bash
-cp ~/.dotfiles/git/.gitconfig ~/.gitconfig
+cp ~/.dotfiles/git/copy_me.gitconfig ~/.gitconfig
 ```
 
-Edit it to replace the parts surrounded by "{" and "}" with the correct info:
+Edit the copy to replace the parts surrounded by "{" and "}" with the correct
+info (also edit the path *IF* the path to this directory is *NOT*
+`~/.dotfiles`):
 
 ```gitconfig
+[include]
+    path = ~/.dotfiles/git/.git_my_config
 [user]
     signingkey = {Your PGP signing key}
     email = {your@email.com}
@@ -124,28 +132,47 @@ ln -s ~/.dotfiles/vim/vimrc ~/.vim/vimrc
 ln -s ~/.dotfiles/vim/pack/plugins/start/* ~/.vim/pack/plugins/start/
 ```
 
-### NeoVim
+### Neovim
 
-If needed, create the directories `~/.local/share/nvim/site/autoload`,
-`~/.config/nvim` and `~/.config/nvim/colors`:
+#### Add the plugin manager `vim-plug`
+
+Follow the instructions [on installing vim-plug for
+Neovim](https://github.com/junegunn/vim-plug#neovim). The needed directories
+will be created and the needed file copied. Running the command `:PlugUpgrade`
+from within `Neovim`, when needed, will upgrade the plugin manager.
+
+#### Setup the config
+
+If needed, create the default directory, `~/.config/nvim` on Linux or
+`~/AppData/Local/nvim` on Windows:
 
 ```bash
-mkdir -p ~/.local/share/nvim/site/autoload
-mkdir -p ~/.config/nvim/colors
-```
+# Linux:
+mkdir -p ~/.config/nvim
 
-Then, if needed, remove/archive the old files, `~/.config/nvim/init.lua`,
-`~/.config/nvim/init.vim` and `~/.local/share/nvim/site/autoload/plug.vim`
-before creating the following symlinks:
+# Windows (Powerrshell):
+mkdir ~/AppData/Local/nvim
+```
+If needed remove/archive the old file, `init.vim`, from that directory. Then
+copy the following file:
 
 ```bash
-ln -s ~/.dotfiles/nvim/init.lua ~/.config/nvim/init.lua
-ln -s ~/.dotfiles/nvim/vim-plug/plug.vim \
-    ~/.local/share/nvim/site/autoload/.
-ln -s ~/.dotfiles/nvim/colors/* ~/.config/nvim/colors/.
+# Linux:
+cp ~.dotfiles/nvim/copy_me.init.vim ~/.config/nvim/init.vim
+
+# Windows (Powerrshell):
+cp ~.dotfiles/nvim/copy_me.init.vim ~/AppData/Local/nvim/init.vim
 ```
 
-Do note that the first time you open neovim after this, you might get a bunch
+*IF* the path to this directory is *NOT* `~/.dotfiles`, then edit the path in
+the first line of the copy:
+
+```vimrc
+set runtimepath^=~/.dotfiles/nvim
+lua require('main_config')
+```
+
+Do note that the first time you open `Neovim` after this, you might get a bunch
 of errors because of missing plugins. Fix that with the `:PlugUpdate` command
-(from within NeoVim). You will probably have to quit and open neovim again
+(from within `Neovim`). You will probably have to quit and open `Neovim` again
 (and even might have to repeat that command omce more).
