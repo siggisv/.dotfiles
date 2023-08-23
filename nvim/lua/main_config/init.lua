@@ -32,9 +32,9 @@ vim.opt.termguicolors = true
 vim.cmd.colorscheme('neonormal')
 
 vim.opt.guicursor = {
-  'n-v-c-sm:block',
-  'ci-ve-i:ver25-Cursor/lCursor',
-  'r-cr-o:hor20-Cursor/lCursor',
+  'n-v-c-sm:block-inverse-blinkon350-blinkoff180',
+  'ci-ve-i:ver25-Cursor',
+  'r-cr-o:hor20-Cursor',
 }
 
   -- Highlight linenumber of current cursor position:
@@ -43,7 +43,7 @@ vim.opt.cursorline = true
   -- Show whitespace as darkgray symbols:
 vim.opt.list = true
 vim.opt.listchars = {
-  tab = '¦─⇥',
+  tab = '¦─>',
   eol = '↵',
   extends = '>',
   precedes = '<',
